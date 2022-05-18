@@ -1,5 +1,5 @@
 # fastapi_project_template
-RESTful Back-end project template with FastAPI + PostgreSQL + JWT + Docker
+RESTful Back-end project template with FastAPI + PostgreSQL + JWT + Docker + Nginx
 
 
 ## Features
