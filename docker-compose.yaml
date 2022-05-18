@@ -3,11 +3,12 @@ version: "3.8"
 services:
     api:
         build: ./app
-        ports: 
-            - 8080:8080
+        # ports: 
+        #     - 8080:8080
 
         volumes:
             - ./app:/app
+        restart: always
         depends_on:
             - db
 
@@ -17,8 +18,19 @@ services:
         - postgres_data:/var/lib/postgresql/data/
         env_file:
         - ./app/.env
+    nginx:
+        build: ./nginx
+        volumes:
+        - static_volume:/home/app/web/staticfiles
+        - media_volume:/home/app/web/mediafiles
+        ports:
+        - 80:80
+        - 443:443
+        depends_on:
+        - api
 
 volumes:
     postgres_data:
-
+    static_volume:
+    media_volume:
 
