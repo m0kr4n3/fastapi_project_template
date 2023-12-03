@@ -10,10 +10,10 @@ def init_db(db: Session) -> None:
 
     Base.metadata.create_all(bind=engine)
 
-    user_obj = user.get_by_email(db, email=settings.FIRST_SUPERUSER)
+    user_obj = user.get_by_email(db, email=settings.FIRST_SUPERUSER_EMAIL)
     if not user_obj:
         user_in = schemas.UserCreate(
-            email=settings.FIRST_SUPERUSER,
+            email=settings.FIRST_SUPERUSER_EMAIL,
             password=settings.FIRST_SUPERUSER_PASSWORD,
             is_superuser=True,
         )
