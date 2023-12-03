@@ -16,8 +16,11 @@ services:
         image: postgres:13.0-alpine
         volumes:
         - postgres_data:/var/lib/postgresql/data/
+        # ports: 
+        #     - 5432:5432
         env_file:
         - ./app/.env
+
     nginx:
         build: ./nginx
         volumes:
