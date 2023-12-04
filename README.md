@@ -8,7 +8,7 @@ RESTful Back-end project template with FastAPI + PostgreSQL + JWT + Docker + Ngi
 - Fastapi which means an interactive API documentation.
 - Scalable and evolutive structure for large projects.
 
-Built on Python: 3.8.
+Built on Python: 3.11.
 
 ## Routes
 ![routes](./routes.png)
