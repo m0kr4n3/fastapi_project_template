@@ -15,7 +15,7 @@ from src.crud import crud_user
 router = APIRouter()
 
 
-@router.post("/login/access-token", response_model=schemas.Token)
+@router.post("/access-token", response_model=schemas.Token)
 def login_access_token(
     db: Session = Depends(deps.get_db),user_in: UserCreate = Body(None)
 ) -> Any:
@@ -39,7 +39,7 @@ def login_access_token(
         "token_type": "bearer",
     }
 
-@router.post("/login/test-token", response_model=schemas.User)
+@router.post("/test-token", response_model=schemas.User)
 def test_token(current_user: models.User = Depends(deps.get_current_user)) -> Any:
     """
     Test access token

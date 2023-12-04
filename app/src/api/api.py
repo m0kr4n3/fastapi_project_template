@@ -1,5 +1,5 @@
 from src.api.endpoints import login, users, items
-from fastapi import FastAPI
+from fastapi import FastAPI, APIRouter
 from starlette.middleware.cors import CORSMiddleware
 from src.core.config import settings
 
@@ -14,6 +14,14 @@ if settings.BACKEND_CORS_ORIGINS:
         allow_methods=["*"],
         allow_headers=["*"],
     )
-api_router.include_router(login.router, tags=["login"])
+
+root_router = APIRouter()
+
+@root_router.get("/")
+def root():
+    return {"message": "welcome! go to /docs for API documentation."}
+
+api_router.include_router(root_router,  tags=["root"])
+api_router.include_router(login.router, prefix='/login', tags=["login"])
 api_router.include_router(users.router, prefix="/users", tags=["users"])
 api_router.include_router(items.router, prefix="/items", tags=["items"])
